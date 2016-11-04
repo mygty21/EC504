@@ -1,35 +1,27 @@
 
 public class Main {
 	public static void main(String[] arg) {
-		AVLTree t = new AVLTree();
-		t.insert(20);
-		t.insert(36);
-		t.insert(18);
-		t.insert(24);
-		t.print();
-		t.insert(28);
-		t.print();
-		t.insert(27);
-		t.print();
-		t.insert(15);
-		t.print();
-		t.insert(14);
-		t.print();
-		t.insert(13);
-		t.print();
-		t.insert(12);
-		t.print();
-		t.insert(17);
-		t.print();
-		t.remove(14);
-		t.print();
-		t.remove(18);
-		t.print();
-		t.remove(20);
-		t.print();
-		t.remove(17);
-		t.print();
-		t.remove(13);
-		t.print();
+		Fheap fh = new Fheap();
+		fh.insert(4);
+		fh.insert(7);
+		fh.insert(10);
+		fh.insert(3);
+		fh.insert(45);
+		fh.printlist(fh.min);
+		System.out.println(fh.n);
+
+		Fheap fh2 = new Fheap();
+		fh2.insert(20);
+		fh2.insert(54);
+		fh2.insert(15);
+		fh2.insert(1);
+		fh2.insert(35);
+		fh2.insert(8);
+		fh2.printlist(fh2.min);
+		System.out.println(fh2.n);
+		
+		fh.union(fh2);
+		fh.printlist(fh.min);
+		System.out.println(fh.n);
 	}
 }
