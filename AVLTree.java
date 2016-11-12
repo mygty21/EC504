@@ -93,12 +93,41 @@ public class AVLTree {
 	
 	public int predecessor(int num) {
 		return predecessorNode(num).val;
+
 	}
 	
 	public int successor(int num) {
 		return successorNode(num).val;
+
 	}
 	
+	public int height(){
+		return 1 + root.height;
+		
+	}
+
+	public boolean is_balanced(){
+		return balanced(root);
+
+	}
+
+
+	private boolean balanced(AVLNode node){
+		if(node == null)
+			return true;
+		else{
+			if(node.left==null && node.right==null){
+				return true;
+			}else if(node.left==null){
+				return (node.right.height) == 0 && balanced(node.left) && balanced(node.right);
+			}else if(node.right==null){
+				return (node.left.height) == 0 && balanced(node.left) && balanced(node.right);
+			}else{
+				return Math.abs(node.left.height - node.right.height) <= 1 && balanced(node.left) && balanced(node.right);
+			}
+
+		}
+	}
 	private AVLNode insertHelper(int num, AVLNode node) {
 		if(node == null) {
 			return new AVLNode(num);
