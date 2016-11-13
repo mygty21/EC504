@@ -1,8 +1,4 @@
-// adapted from http://memorynotfound.com/add-junit-listener-example/
-// Highly redundant with GradedTestListenerJSON. Maybe refactor later.
-// Also, should output go to StdErr? That's what Paul did.
-package jh61b.junit;
-
+package junit;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -21,7 +17,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
-//import jh61b.junit.JUnitUtilities;
+
 import java.util.HashSet;
 
 import java.util.Arrays;
@@ -32,7 +28,7 @@ public class TestRunnerPrintAll extends RunListenerWithCapture {
 
     /* Code to run at the beginning of a test run. */
     public void testRunStarted(Description description) throws Exception {
-        System.out.println("Running JUnit tests using jh61b.junit.TestRunner in \"all\" mode.\n");
+        System.out.println("Running tests");
     }
 
     /* Code to run at the end of test run. */
@@ -51,9 +47,7 @@ public class TestRunnerPrintAll extends RunListenerWithCapture {
         this.startCapture();
     }
 
-    /** When a test completes, add the test output at the bottom. Then stop capturing
-      * StdOut. Open question: Is putting the captured output at the end clear? Or is that
-      * possibly confusing? We'll see... */
+
     public void testFinished(Description description) throws Exception {
         String printedOutput = this.endCapture();
         String printedOutputNoTrailingWS = printedOutput.replaceFirst("\\s+$", "");
@@ -66,13 +60,9 @@ public class TestRunnerPrintAll extends RunListenerWithCapture {
         } else {
             System.out.println("=====> FAILED!\n");            
         }
-        //System.out.println(String.format("==> Score: %.2f / %.2f", currentTestResult.score, currentTestResult.maxScore));
+       
     }
 
-    /** Sets score to 0 and appends reason for failure and dumps a stack trace.
-      * TODO: Clean up this stack trace so it is not hideous. 
-      * Other possible things we might want to consider including: http://junit.sourceforge.net/javadoc/org/junit/runner/notification/Failure.html.
-      */
     public void testFailure(Failure failure) throws Exception {
         System.out.println(JUnitUtilities.failureToString(failure));
         mostRecentTestPassed = false;

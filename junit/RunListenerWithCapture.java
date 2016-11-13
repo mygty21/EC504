@@ -1,5 +1,4 @@
-package jh61b.junit;
-
+package junit;
 import org.junit.runner.notification.RunListener;
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;

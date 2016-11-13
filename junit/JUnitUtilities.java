@@ -1,4 +1,4 @@
-package jh61b.junit;
+package junit;
 import org.junit.runner.notification.Failure;
 import java.lang.reflect.Method;
 import org.junit.Test;

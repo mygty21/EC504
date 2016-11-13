@@ -1,6 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
-import jh61b.junit.TestRunner;
+import junit.TestRunner;
 
 /** This class tests the Sort class. */
 public class TestAVLTree{	
@@ -80,6 +80,6 @@ public class TestAVLTree{
 		assertTrue(T1.is_balanced());
 	}
 	public static void main(String[] args) {
-		TestRunner.runTests("all",TestAVLTree.class);
+		TestRunner.runTests(TestAVLTree.class);
 	}
 } 
