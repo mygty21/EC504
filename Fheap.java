@@ -1,10 +1,19 @@
-public class Fheap {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Fheap implements Heap{
 	FNode min;
 	int n;
+	Map<Integer, FNode> map;
 	
 	public Fheap(){
 		this.min = null;
 		this.n = 0;
+		this.map = new HashMap<Integer, FNode>();
+	}
+	
+	public boolean isEmpty(){
+		return this.min == null;
 	}
 	
 	public void insert(int num){
@@ -41,6 +50,107 @@ public class Fheap {
 		}
 	}
 	
+	public int min(){
+		return this.min.key;
+	}
+	
+	public int extractMin() {
+		int res = this.min.key;
+		FNode extract = this.min;
+
+		if (this.min == null){
+			return Integer.MAX_VALUE;
+		}
+		
+		while(this.min.child != null){
+			FNode temp = this.min.child;
+			this.min.child = removeNode(temp);
+			temp.parent = null;
+			this.min.insertRight(temp);
+		}
+		
+		this.min = removeNode(extract);
+		consolidate();
+		this.n--;
+		return res;
+	}
+	
+	private void consolidate(){
+		if (this.min == null) {
+			return;
+		}
+		FNode[] A = new FNode[D()];
+		FNode end = this.min, cur = this.min;
+		do{
+			FNode node = cur;
+			while(A[node.degree] != null){
+				if(node.key < A[node.degree].key){
+					if(A[node.degree] == end){
+						end = end.right;
+					}
+					fibHeapLink(node, A[node.degree]);
+				} else {
+					if(node == end){
+						end = end.right;
+					}
+					fibHeapLink(A[node.degree], node);
+					node = A[node.degree];
+				}
+                A[node.degree] = null;
+                node.degree++;
+			}
+			A[node.degree] = node;
+			cur = node.right;
+		}while(cur != end);
+		
+		this.min = null;
+		for(int i = 0; i < A.length; i++){
+			if (A[i] != null){
+				if (this.min == null){
+					this.min = A[i];
+				} else {
+					if (A[i].key < this.min.key)
+						this.min = A[i];
+				}
+			}
+		}
+	}
+	
+	private void fibHeapLink(FNode parent, FNode child){
+		removeNode(child);
+		child.parent = parent;
+		child.mark = false;
+		if(parent.child==null){
+			parent.child = child;
+			child.left = child;
+			child.right = child;
+		} else {
+			parent.child.insertRight(child);
+		}
+	}
+	
+	private int D(){
+		return (int)(Math.ceil(Math.log((double)n)/Math.log(2.0)))+1;
+	}
+	
+	/**
+	 * Remove a node from a node list. Input the node that needs to be removed,
+	 * if it is the only node in the list, return null;
+	 * otherwise connect node.left and node.right, then return node.right.
+	 * 
+	 * @param node to be removed.
+	 * @return node.right if the node list is not empty or null if node list is empty.
+	 */
+	private FNode removeNode(FNode node){
+		if (node.right == node){
+			return null;
+		}
+		
+		node.left.right = node.right;
+		node.right.left = node.left;
+		return node.right;
+	}
+	
 	//for test
 	public void printlist(FNode node){
 		FNode cur = node;
@@ -72,11 +182,20 @@ class FNode {
 		right = this;
 	}
 	
+	/**
+	 * Input a FNode and insert the input node on the right side of this FNode
+	 * 
+	 * @param node to be inserted
+	 */
 	void insertRight(FNode node){
 		FNode r = this.right;
 		this.right = node;
 		r.left = node;
 		node.left = this;
 		node.right = r;
+	}
+	
+	public String toString(){
+		return "(left="+left.key+"  this="+key+"  right="+right.key+")";
 	}
 }

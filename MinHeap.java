@@ -1,7 +1,7 @@
 import java.awt.List;
 
 //TODO decreaseKey
-public class MinHeap {
+public class MinHeap implements Heap{
 	private int[] A;
 	private int size;
 	

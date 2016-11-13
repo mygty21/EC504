@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
-public class AVLTree {
+public class AVLTree implements Heap{
 	AVLNode root;
 	
 	public AVLTree(){

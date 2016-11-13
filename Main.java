@@ -23,5 +23,10 @@ public class Main {
 		fh.union(fh2);
 		fh.printlist(fh.min);
 		System.out.println(fh.n);
+		
+		while(!fh.isEmpty()){
+			System.out.print("heap min="+fh.extractMin());
+			System.out.println();
+		}
 	}
 }
