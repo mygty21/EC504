@@ -49,7 +49,10 @@ public class AVLTree implements Heap{
 			target.val = cur.val;
 		}
 		
-		if(path.peek().left == cur) {
+		if(path.isEmpty()){
+			this.root = this.root.right;
+			return;
+		}else if(path.peek().left == cur) {
 			if(cur.left != null){
 				path.peek().left = cur.left;
 			} else {

@@ -1,32 +1,20 @@
 
 public class Main {
 	public static void main(String[] arg) {
-		Fheap fh = new Fheap();
-		fh.insert(4);
-		fh.insert(7);
-		fh.insert(10);
-		fh.insert(3);
-		fh.insert(45);
-		fh.printlist(fh.min);
-		System.out.println(fh.n);
-
-		Fheap fh2 = new Fheap();
-		fh2.insert(20);
-		fh2.insert(54);
-		fh2.insert(15);
-		fh2.insert(1);
-		fh2.insert(35);
-		fh2.insert(8);
-		fh2.printlist(fh2.min);
-		System.out.println(fh2.n);
+		Fheap h = new Fheap();
 		
-		fh.union(fh2);
-		fh.printlist(fh.min);
-		System.out.println(fh.n);
-		
-		while(!fh.isEmpty()){
-			System.out.print("heap min="+fh.extractMin());
-			System.out.println();
+		h.insert(1);
+		h.insert(6);
+		h.insert(5);
+		h.insert(4);
+		h.insert(10);
+		h.insert(2);
+		h.insert(9);
+		h.insert(3);
+		h.insert(8);
+		h.insert(7);
+		while(!h.isEmpty()){
+			System.out.print(h.extractMin()+" ");
 		}
 	}
 }
