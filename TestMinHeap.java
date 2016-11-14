@@ -1,5 +1,4 @@
 import org.junit.Test;
-import jh61b.junit.TestRunner;
 
 import static org.junit.Assert.*;
 
@@ -35,6 +34,6 @@ public class TestMinHeap {
         assertFalse(heap.isEmpty());
     }
     public static void main(String[] args) {
-        TestRunner.runTests("all",TestMinHeap.class);
+        TestRunner.runTests(TestMinHeap.class);
     }
 }
