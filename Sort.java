@@ -2,6 +2,11 @@ import java.util.Random;
 
 public class Sort {
 	
+	/*
+	 * first insert all value into data structure 
+	 * sort array by extract min value from the data structure
+	 * 
+	 */
 	public static int[] sort(Heap h, int[] num){
 		for(int i=0;i<num.length;i++){
 			h.insert(num[i]);
@@ -18,6 +23,7 @@ public class Sort {
 		for(int i=1;i<=n;i++){
 			num[i-1] = i;
 		}
+		//shuffle the array
 		Random rnd = new Random();
 		int i,j;
         for (i = num.length - 1; i > 0; i--) {
