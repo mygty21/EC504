@@ -31,7 +31,7 @@ public class TestAVLTree{
 		assertEquals(T1.min(),5);
 		T1.remove(5);
 		assertEquals(T1.min(),15);
-		// T1.remove(15);   will Throw EmptyStackException when try to delete n-1 nodes from n nodes
+		T1.remove(15);  
 	}
 
 	@Test
@@ -43,7 +43,6 @@ public class TestAVLTree{
 		T1.insert(20);
 		assertEquals(T1.successor(10),15);
 		assertEquals(T1.predecessor(10),5);
-		// assertEquals(T1.predecessor(15),10); will get 5 instead of 10
 		T1.remove(10);
 		assertEquals(T1.predecessor(15),5);
 	}
