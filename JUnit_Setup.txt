@@ -6,3 +6,4 @@
 		* export JUNIT_HOME = /Library/JUNIT
 		* export CLASSPATH = $CLASSPATH:$JUNIT_HOME/junit-4.12.jar:.
 * link for downloading junit-4.12.jar and hamcrest-core-1.3.jar : https://github.com/junit-team/junit4/wiki/Download-and-Install
+3.the results of unittests can be checked by compiling all the classes and running the test classes.
