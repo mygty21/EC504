@@ -1,5 +1,9 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import visualization.Visualizable;
 
 public class Fheap implements Heap{
 	FNode min;
@@ -81,8 +85,15 @@ public class Fheap implements Heap{
 		}
 		FNode[] A = new FNode[D()];
 		FNode end = this.min, cur = this.min;
-		do{
-			FNode node = cur;
+		List<FNode> rootList = new ArrayList<FNode>();
+		do {
+			rootList.add(cur);
+			cur = cur.right;
+		}while (cur != end);
+		
+		
+		for(int i = 0; i < rootList.size(); i++){
+			FNode node = rootList.get(i);
 			while(A[node.degree] != null){
 				if(node.key < A[node.degree].key){
 					if(A[node.degree] == end){
@@ -100,8 +111,8 @@ public class Fheap implements Heap{
                 node.degree++;
 			}
 			A[node.degree] = node;
-			cur = node.right;
-		}while(cur != end);
+        }
+		
 		
 		this.min = null;
 		for(int i = 0; i < A.length; i++){
@@ -163,7 +174,7 @@ public class Fheap implements Heap{
 	}
 }
 
-class FNode {
+class FNode implements Visualizable{
 	int key;
 	int degree;
 	boolean mark;
@@ -196,6 +207,53 @@ class FNode {
 	}
 	
 	public String toString(){
-		return "(left="+left.key+"  this="+key+"  right="+right.key+")";
+		return "(left="+left.key+"  this="+key+",degree="+degree+"  right="+right.key+")";
+	}
+
+	@Override
+	public Visualizable getLeftNeighbor() {
+		return this.left;
+	}
+
+	@Override
+	public Visualizable getRightNeightbor() {
+		// TODO Auto-generated method stub
+		return this.right;
+	}
+
+	@Override
+	public List<Visualizable> getChildren() {
+		// TODO Auto-generated method stub
+		if(this.child==null){
+			return new ArrayList<Visualizable>();
+		}
+		
+		List<Visualizable> list = new ArrayList<Visualizable>();
+		FNode child = this.child;
+		list.add(child);
+		FNode cur = child.right;
+		while(cur != child){
+			list.add(cur);
+			cur = cur.right;
+		}
+		return list;
+	}
+
+	@Override
+	public boolean isMarked() {
+		// TODO Auto-generated method stub
+		return this.mark;
+	}
+
+	@Override
+	public String getLabel() {
+		// TODO Auto-generated method stub
+		return this.key+"";
+	}
+
+	@Override
+	public boolean isRoot() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
