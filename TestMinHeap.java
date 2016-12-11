@@ -1,9 +1,10 @@
 import org.junit.Test;
 import junit.TestRunner;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 /**
- * Created by allegro_l on 10/11/16.
+ * This class tests the MinHeap class
  */
 public class TestMinHeap {
     @Test
@@ -18,6 +19,8 @@ public class TestMinHeap {
         assertEquals(1,heap.extractMin());
         assertEquals(2,heap.min());
     }
+
+
     @Test
     public void test_min_array_init() {
     	int[] test_array={3,2,5,60,1};
@@ -26,6 +29,8 @@ public class TestMinHeap {
         assertEquals(1,heap.extractMin());
         assertEquals(2,heap.min());
     }
+
+
     @Test
     public void test_empty() {
         MinHeap heap= new MinHeap();
@@ -33,6 +38,18 @@ public class TestMinHeap {
         heap.insert(3);
         assertFalse(heap.isEmpty());
     }
+
+
+    @Test
+    public void test_sort() {
+        MinHeap heap= new MinHeap();
+        int[] num=Sort.createRandomArray(10000);
+        int[] sorted=Sort.sort(heap,num);
+        Arrays.sort(num);
+        assertArrayEquals(num,sorted);
+    }
+
+
     public static void main(String[] args) {
         TestRunner.runTests(TestMinHeap.class);
     }

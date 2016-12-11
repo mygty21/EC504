@@ -1,10 +1,10 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import junit.TestRunner;
+import java.util.Arrays;
 
-/** This class tests the Sort class. */
+/** This class tests the AVLTree class. */
 public class TestAVLTree{	
-	/** Tests the Sort.sort method */
 	@Test
 	public void test_min() {
 		AVLTree T1 = new AVLTree();
@@ -19,6 +19,8 @@ public class TestAVLTree{
 		assertEquals(T1.extractMin(),1);
 		assertEquals(T1.min(),2);
 	}
+
+
 
 	@Test
 	public void test_remove() {
@@ -78,6 +80,15 @@ public class TestAVLTree{
 		T1.insert(9);
 		assertTrue(T1.is_balanced());
 	}
+
+	@Test
+    public void test_sort() {
+        AVLTree avl= new AVLTree();
+        int[] num=Sort.createRandomArray(10000);
+        int[] sorted=Sort.sort(avl,num);
+        Arrays.sort(num);
+        assertArrayEquals(num,sorted);
+    }
 	public static void main(String[] args) {
 		TestRunner.runTests(TestAVLTree.class);
 	}
