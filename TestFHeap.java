@@ -68,6 +68,6 @@ public class TestFHeap {
 
 
     public static void main(String[] args) {
-        TestRunner.runTests(TestMinHeap.class);
+        TestRunner.runTests(TestFHeap.class);
     }
 }

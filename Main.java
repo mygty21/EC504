@@ -12,16 +12,18 @@ public class Main {
         Heap fh = new Fheap();
         Compare cp;
         ArrayList<Integer> times = new ArrayList<Integer>();
-        times.add(500);
-        times.add(5000);
+        times.add(10000);
         times.add(50000);
+        times.add(100000);
+        times.add(300000);
         times.add(500000);
-        while(choices<4){
+        while(choices<5){
             System.out.println("Please select which data structures to compare(1-4): ");
             System.out.println("1. Fibonacci Heap vs MinHeap");
             System.out.println("2. Fibonacci Heap vs AVL Tree");
             System.out.println("3. AVL Tree vs MinHeap");
-            System.out.println("4. Exit");
+            System.out.println("4. Launch demo for HeapRenderer");
+            System.out.println("5. Exit");
             choices=scanner.nextInt();
             switch(choices){
                 case 1:
@@ -46,6 +48,10 @@ public class Main {
                     cp.run_compare(mh,avl,times);
                     break;
                 case 4:
+                    System.out.println("Launching HeapRenderer...");
+                    Demo.render();
+                    break;
+                case 5:
                     System.out.println("Exit...");
                     break;
                 default:
