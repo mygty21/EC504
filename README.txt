@@ -1,6 +1,7 @@
 1.Environment Setup
 	i. Install Java1.8
 	ii. Download the libraries (./jogl-2.0) and setup JOGL in Eclipse:
+		ref: https://jogamp.org/wiki/index.php/Setting_up_a_JogAmp_project_in_your_favorite_IDE
 		1) Set up a Java project in eclipse and include all the source files(can exclude TestAVLTree.java,TestFHeap.java and TestMinHeap.java if the IDE shows error on these files, which are programs running JUnit test, can be compiled through command line, see JUnit_Setup.txt)
 		2) Select Window->Preferences from the menu to open up the Preferences panel.
 		3) From the panel on the left, select Java->Build Path->User Libraries. Click "New..." on the right hand side
@@ -12,6 +13,7 @@
 		9) Select "Java Build Path" and click the "Libraries" tab.
 		10) Click "Add Library...", select "User Library", click "Next", check "jogl-2.0", and click "Finish".
 		*May need to specify the Main class. Can be done by 'Run->Run Configurations->Java Application->Main class' and set Main.java as Main class
+
 2.Run the application
 	i. Run the application using 'java Main.class' in the output directory
 	ii. Select options based on the menu
